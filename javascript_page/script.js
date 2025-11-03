@@ -1,4 +1,19 @@
 
+        
+        $(document).ready(function() {
+    // Initialize all functionality
+    initScrollAnimations();
+    setupNavbarEffects();
+    setupSmoothScrolling();
+    setupBackToTop();
+    setupGalleryFilter();
+    setupImageModal();
+    setupContactForm();
+    
+    // Initialize active nav link on page load
+    updateActiveNavLink();
+});
+        
         // Typed.js initialization
         document.addEventListener('DOMContentLoaded', function() {
             var typed = new Typed(".text", {
@@ -62,38 +77,58 @@
             });
         });
         
-        // Email sending function
-        function Send() {
-            var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var message = document.getElementById("message").value;
-            
-            if (!name || !email || !message) {
-                swal("Error", "Please fill in all fields", "error");
-                return;
+       // Contact Form Functions
+function setupContactForm() {
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        // Simple validation
+        var isValid = true;
+        $('#contactForm input, #contactForm textarea').each(function() {
+            if ($(this).prop('required') && !$(this).val()) {
+                isValid = false;
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
             }
-            
-            var body = "Name: " + name + "<br/>Email: " + email + "<br/>Message: " + message;
-            
-            Email.send({
-                Host: "smtp.elasticemail.com",
-                Username: "mlamboaaron0@gmail.com",
-                Password: "DFB9786B3F970EF8C5E3A87874ADE676290C",
-                To: 'mlamboaaron0@gmail.com',
-                From: "mlamboaaron0@gmail.com",
-                Subject: "New Message from Portfolio",
-                Body: body
-            }).then(
-                message => {
-                    if (message === "OK") {
-                        swal("Success", "Your message was sent successfully", "success");
-                        document.getElementById("name").value = "";
-                        document.getElementById("email").value = "";
-                        document.getElementById("message").value = "";
-                    } else {
-                        swal("Error", "Something went wrong. Please try again later.", "error");
-                    }
-                }
-            );
+        });
+        
+       if (isValid) {
+            // Replace your current AJAX call with this:
+$.ajax({
+    type: 'POST',
+    url: 'send_email.php',
+    data: $(this).serialize(),
+    success: function(response) {
+        if (response.trim() === 'success') {
+            $('#confirmationModal').modal('show');
+            $('#contactForm')[0].reset();
+        } else {
+            alert('Error sending message. Please try again.');
         }
+    },
+    error: function() {
+        alert('Network error. Please check your connection and try again.');
+    }
+});
+        }
+    });
+}
+
+function setupSmoothScrolling() {
+    $('a.nav-link').on('click', function(event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            
+            // Update active nav link
+            $('.nav-link').removeClass('active');
+            $(this).addClass('active');
+            
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top - 70
+            }, 800);
+        }
+    });
+}
    
