@@ -1,4 +1,4 @@
-// Remove jQuery dependency and use pure JavaScript
+
 document.addEventListener('DOMContentLoaded', function() {
     initPortfolio();
 });
@@ -178,7 +178,7 @@ function updateActiveNavLink() {
     });
 }
 
-// Contact Form Functionality for Netlify (Updated)
+// Contact Form Functionality for Netlify
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
     
@@ -200,23 +200,34 @@ function setupContactForm() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            // For Netlify Forms, we can let the form submit normally
-            // or use the fetch API with the correct endpoint
+            // Submit to Netlify Forms
+            const formData = new FormData(contactForm);
             
-            // Method 1: Let Netlify handle the form submission
-            setTimeout(() => {
-                // Show success message
-                const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-                confirmationModal.show();
-                contactForm.reset();
-                
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+                    confirmationModal.show();
+                    contactForm.reset();
+                    console.log('Form submitted successfully to Netlify');
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Sorry, there was an error sending your message. Please try again or contact me directly.');
+            })
+            .finally(() => {
                 // Reset button state
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 1000);
-            
-            // Method 2: Or submit the form programmatically
-            // contactForm.submit();
+            });
         }
     });
 }
