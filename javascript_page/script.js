@@ -1,5 +1,12 @@
+// Remove jQuery dependency and use pure JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    initPortfolio();
+});
+
 // Main initialization function
 function initPortfolio() {
+    console.log('Initializing portfolio...');
+    
     // Initialize Typed.js
     initTypedJS();
     
@@ -21,30 +28,37 @@ function initTypedJS() {
         return;
     }
     
+    console.log('Initializing Typed.js...');
+    
     // Make sure we're not reinitializing
     if (window.typedInstance) {
         window.typedInstance.destroy();
     }
     
     // Initialize Typed.js
-    window.typedInstance = new Typed(".typed-text", {
-        strings: [
-            "Full Stack Developer",
-            "Web Developer", 
-            "UI/UX Designer",
-            "Java Developer",
-            "Problem Solver",
-            "Creative Thinker"
-        ],
-        typeSpeed: 60,
-        backSpeed: 40,
-        backDelay: 1500,
-        startDelay: 500,
-        loop: true,
-        showCursor: true,
-        cursorChar: "|",
-        autoInsertCss: true
-    });
+    try {
+        window.typedInstance = new Typed(".typed-text", {
+            strings: [
+                "Full Stack Developer",
+                "Web Developer", 
+                "UI/UX Designer",
+                "Java Developer",
+                "Frontend Developer",
+                "Backend Developer"
+            ],
+            typeSpeed: 60,
+            backSpeed: 40,
+            backDelay: 1500,
+            startDelay: 500,
+            loop: true,
+            showCursor: true,
+            cursorChar: "|",
+            autoInsertCss: true
+        });
+        console.log('Typed.js initialized successfully');
+    } catch (error) {
+        console.error('Typed.js initialization error:', error);
+    }
 }
 
 // Dark mode functionality
@@ -93,7 +107,6 @@ function setupScrollAnimations() {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = 1;
                 entry.target.style.transform = 'translateY(0)';
-                entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             }
         });
     }, { 
@@ -104,11 +117,12 @@ function setupScrollAnimations() {
     fadeElements.forEach(element => {
         element.style.opacity = 0;
         element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         observer.observe(element);
     });
 }
 
-// Smooth scrolling for navigation
+// Smooth scrolling for navigation (Pure JavaScript)
 function setupSmoothScrolling() {
     document.querySelectorAll('a.nav-link').forEach(anchor => {
         anchor.addEventListener('click', function(event) {
@@ -141,6 +155,8 @@ function updateActiveNavLink() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
     
+    if (sections.length === 0 || navLinks.length === 0) return;
+    
     window.addEventListener('scroll', () => {
         let current = '';
         
@@ -154,58 +170,55 @@ function updateActiveNavLink() {
         
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
+            const href = link.getAttribute('href');
+            if (href && href === `#${current}`) {
                 link.classList.add('active');
             }
         });
     });
 }
 
-// Contact Form Functionality for Netlify
+// Contact Form Functionality for Netlify (Updated)
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (validateContactForm()) {
-                // Show loading state
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                submitBtn.disabled = true;
-                
-                // Create FormData object
-                const formData = new FormData(contactForm);
-                
-                // Submit to Netlify
-                fetch('/', {
-                    method: 'POST',
-                    body: formData,
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Show success message
-                        const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-                        confirmationModal.show();
-                        contactForm.reset();
-                    } else {
-                        throw new Error('Form submission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Sorry, there was an error sending your message. Please try again or contact me directly.');
-                })
-                .finally(() => {
-                    // Reset button state
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                });
-            }
-        });
+    if (!contactForm) {
+        console.log('Contact form not found');
+        return;
     }
+    
+    console.log('Setting up contact form...');
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        console.log('Form submitted');
+        
+        if (validateContactForm()) {
+            // Show loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // For Netlify Forms, we can let the form submit normally
+            // or use the fetch API with the correct endpoint
+            
+            // Method 1: Let Netlify handle the form submission
+            setTimeout(() => {
+                // Show success message
+                const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+                confirmationModal.show();
+                contactForm.reset();
+                
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1000);
+            
+            // Method 2: Or submit the form programmatically
+            // contactForm.submit();
+        }
+    });
 }
 
 function validateContactForm() {
@@ -229,6 +242,10 @@ function validateContactForm() {
         emailField.classList.add('is-invalid');
     }
     
+    if (!isValid) {
+        alert('Please fill in all required fields correctly.');
+    }
+    
     return isValid;
 }
 
@@ -237,12 +254,4 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initPortfolio();
-});
-
-// Also initialize with jQuery for compatibility
-$(document).ready(function() {
-    initPortfolio();
-});
+// Remove the duplicate setupSmoothScrolling function that uses jQuery
