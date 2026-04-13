@@ -284,7 +284,7 @@
         
         .body-wise {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e6e9ff 100%);
+            /* background: linear-gradient(135deg, #f0f4f8 0%, #e6e9ff 100%); */
             color: var(--dark);
             line-height: 1.7;
             min-height: 100vh;
@@ -293,6 +293,10 @@
             align-items: center;
             padding: 20px;
         }
+
+        /* .dark-mode .body-wise{
+            background: var(--black-color);
+        } */
         
         .about-container {
             max-width: 1200px;
@@ -1619,5 +1623,241 @@
 .is-invalid:focus {
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
 }
+
+/* Dark Mode Styles for About Section */
+body.dark-mode #about-section {
+    --bg-light: #1a1a1a;
+    --text-dark: #ffffff;
+    --text-muted: #b0b0b0;
+    --border-light: #333333;
+    --card-bg: #2d2d2d;
+    --hover-bg: #3a3a3a;
+}
+
+body.dark-mode .about-card  {
+    background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .personal-info{
+    background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .profile-header h1 {
+    color: #ffffff;
+}
+
+body.dark-mode .profile-header p {
+    color: #6c63ff;
+}
+
+body.dark-mode .tagline {
+    color: #b0b0b0;
+}
+
+body.dark-mode .info-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .info-icon {
+    background: rgba(108, 99, 255, 0.2);
+    color: #6c63ff;
+}
+
+body.dark-mode .info-content h4 {
+    color: #ffffff;
+}
+
+body.dark-mode .info-content p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .story-section h2,
+body.dark-mode .expertise-section h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .story-section p {
+    color: #d0d0d0;
+}
+
+body.dark-mode .philosophy {
+    background: rgba(108, 99, 255, 0.1);
+    border-left: 4px solid #6c63ff;
+}
+
+body.dark-mode .philosophy p {
+    color: #e0e0e0;
+}
+
+body.dark-mode .skill-category {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .skill-title {
+    color: #ffffff;
+}
+
+body.dark-mode .skill-icon {
+    background: rgba(108, 99, 255, 0.2);
+    color: #6c63ff;
+}
+
+body.dark-mode .skill-item {
+    color: #d0d0d0;
+}
+
+body.dark-mode .skill-item i {
+    color: #6c63ff;
+}
+
+body.dark-mode .skill-name {
+    color: #e0e0e0;
+}
+
+body.dark-mode .skill-level {
+    background: rgba(108, 99, 255, 0.2);
+    color: #6c63ff;
+}
+
+body.dark-mode .stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .stat-number {
+    color: #6c63ff;
+}
+
+body.dark-mode .stat-label {
+    color: #b0b0b0;
+}
+
+/* Dark Mode Styles for Services Section */
+body.dark-mode .service-body {
+    background: #0a0a0a;
+}
+
+body.dark-mode .service-card {
+    background: var(--bg-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--dark-blue);
+}
+
+body.dark-mode .service-icon {
+    background: rgba(49, 39, 233, 0.15);
+    color: #6c63ff;
+}
+
+body.dark-mode .service-content h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .service-content p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .service-btn {
+    color: #ffffff;
+}
+
+body.dark-mode .service-btn:hover {
+    background: #6c63ff;
+    color: #331cfa;
+}
+
+/* Dark Mode for Modal/Overlay elements */
+body.dark-mode .gallery-modal,
+body.dark-mode .project-modal {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+body.dark-mode .gallery-content,
+body.dark-mode .project-content {
+    background: #1a1a1a;
+}
+
+body.dark-mode .gallery-title,
+body.dark-mode .project-title {
+    color: #ffffff;
+}
+
+body.dark-mode .project-subtitle {
+    color: #b0b0b0;
+}
+
+body.dark-mode .gallery-caption h3,
+body.dark-mode .project-name {
+    color: #ffffff;
+}
+
+body.dark-mode .gallery-caption p,
+body.dark-mode .project-description {
+    color: #b0b0b0;
+}
+
+body.dark-mode .project-card {
+    background: #2d2d2d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .project-tech .tech-tag {
+    background: rgba(108, 99, 255, 0.2);
+    color: #6c63ff;
+}
+
+body.dark-mode .project-link {
+    background: rgba(108, 99, 255, 0.1);
+    color: #6c63ff;
+}
+
+body.dark-mode .project-link:hover {
+    background: #6c63ff;
+    color: #ffffff;
+}
+
+body.dark-mode .project-link.github {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+body.dark-mode .project-link.github:hover {
+    background: #333333;
+}
+
+/* Dark Mode Toggle Button Styles */
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark-mode .dark-mode-toggle i {
+    color: #ffd700;
+}
+
+.dark-mode-toggle i {
+    color: #333333;
+    transition: color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    transform: rotate(15deg);
+}
+
+
     
    
