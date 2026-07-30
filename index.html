@@ -22,7 +22,7 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="images/icon.jpg">
     
-    <!-- jQuery (if you need it for other functionality) -->
+    
     
     
     <link rel="stylesheet" type="text/css" href="style_page/styleSheet.css">
@@ -49,9 +49,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about-section">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skill-section">Skills</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#services-section">Services</a>
@@ -91,7 +88,7 @@
                         </button>
                     </div>
                     <div class="mlambo-social-icons">
-                        <a href="#" class="chibi"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://github.com/armlambo99" class="chibi"><i class="fa-brands fa-github"></i></a>
                         <a href="https://www.facebook.com/aaron.mlambo.336" target="_blank" class="chibi"><i class='bx bxl-facebook'></i></a>
                         <a href="#" class="chibi"><i class="fa-brands fa-x-twitter"></i></a>
                         <a href="#contact-section" class="chibi"><i class='bx bxl-gmail'></i></a>
@@ -327,99 +324,7 @@
         </div>
     </div>
 </section>
-    <!-- Skills Section -->
-    <section id="skill-section">
-        <div class="container">
-            <h2 class="section-heading text-center">My <span style="color: var(--first-color);">Skills</span></h2>
-            <p class="text-center mb-5">Here is my skills to represent my expertise</p>
-            
-            <div class="row">
-                <div class="col-md-6 fade-in">
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <p>HTML</p>
-                            <p>95%</p>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <p>CSS</p>
-                            <p>80%</p>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <p>JavaScript</p>
-                            <p>70%</p>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 70%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <p>JAVA</p>
-                            <p>90%</p>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 fade-in">
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <p>BootStrap</p>
-                            <p>75%</p>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 75%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <p>MySQL</p>
-                            <p>80%</p>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <p>Node.js</p>
-                            <p>55%</p>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 55%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <p>Software Engineering</p>
-                            <p>82%</p>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 82%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Services Section -->
     <section id="services-section" class="service-body service-root all-service">
@@ -466,7 +371,7 @@
                     <div class="service-content">
                         <h3>E-commerce Solutions</h3>
                         <p>Unlock your online business's full potential with our comprehensive e-commerce solutions. We create gateways to new customers, increased sales, and revenue maximization.</p>
-                        <a href="#ecommerce-projects" class="service-btn">
+                        <a href="#" class="service-btn" id="view-ecommerce-btn">
                             View Solutions <i class='bx bx-store'></i>
                         </a>
                     </div>
@@ -474,6 +379,71 @@
             </div>
         </div>
     </section>
+
+        <!-- E-commerce Solutions Modal -->
+    <div id="ecommerce-modal" class="project-modal">
+        <div class="close-projects" id="close-ecommerce">&times;</div>
+        <div class="project-content">
+            <h2 class="project-title">E-commerce Solutions</h2>
+            <p class="project-subtitle">Explore a selection of online stores and e-commerce platforms I've developed. Each project is built to maximize conversions, ensure security, and provide a seamless shopping experience.</p>
+            
+            <div class="projects-grid">
+                <!-- E-commerce Project 1 -->
+                <div class="project-card fade-in">
+                    <div class="project-img" style="background: linear-gradient(45deg, #11998e, #38ef7d);">
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: white; font-size: 2rem; font-weight: bold;">
+                            UNIWISP 
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Modern Retail Platform</h3>
+                        <p class="project-description">A fully responsive e-commerce website with cart functionality, user authentication, and payment gateway integration.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML & CSS</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://uniwispdev.co.za" target="_blank" class="project-link">
+                                <i class='bx bx-globe'></i> Live Preview
+                            </a>
+                            <a href="#" target="_blank" class="project-link github">
+                                <i class='bx bxl-github'></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-commerce Project 2 -->
+                <div class="project-card fade-in delay-1">
+                    <div class="project-img" style="background: linear-gradient(45deg, #ff416c, #ff4b2b);">
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: white; font-size: 2rem; font-weight: bold;">
+                            Fashion Boutique
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Fashion E-commerce</h3>
+                        <p class="project-description">A stylish online boutique featuring advanced product filtering, wishlist functionality, and a seamless checkout experience.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Shopify API</span>
+                            <span class="tech-tag">Redux</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" target="_blank" class="project-link">
+                                <i class='bx bx-globe'></i> Live Preview
+                            </a>
+                            <a href="#" target="_blank" class="project-link github">
+                                <i class='bx bxl-github'></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- Graphic Design Gallery Modal -->
     <div id="gallery-modal" class="gallery-modal">

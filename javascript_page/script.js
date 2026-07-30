@@ -17,6 +17,8 @@ function initPortfolio() {
     setupDarkMode();
     setupPlayButton();
     setupScrollAnimations();
+
+    setupModals(); 
 }
 
 // Typed.js initialization
@@ -59,6 +61,52 @@ function initTypedJS() {
     } catch (error) {
         console.error('Typed.js initialization error:', error);
     }
+}
+
+// Modal Functionality
+function setupModals() {
+    // Helper function to initialize a modal
+    function initModal(openBtnId, closeBtnId, modalId) {
+        const openBtn = document.getElementById(openBtnId);
+        const closeBtn = document.getElementById(closeBtnId);
+        const modal = document.getElementById(modalId);
+
+        if (openBtn && closeBtn && modal) {
+            // Open modal
+            openBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'flex'; // Assumes your CSS uses flex for centering
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+
+            // Close modal via 'X' button
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            });
+
+            // Close modal when clicking outside the content area (on the backdrop)
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close modal with Escape key for better accessibility
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+    }
+
+    // Initialize all three modals
+    initModal('view-projects-btn', 'close-projects', 'projects-modal');
+    initModal('view-gallery-btn', 'close-gallery', 'gallery-modal');
+    initModal('view-ecommerce-btn', 'close-ecommerce', 'ecommerce-modal');
 }
 
 // Dark mode functionality
